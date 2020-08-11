@@ -6,6 +6,8 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 RUN rails generate simple_form:install
+RUN rails generate devise:install
+RUN rails generate devise MODEL
 RUN guard init livereload
 COPY . /myapp
 
@@ -15,5 +17,6 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
+#CMD ["rails", "generate", "devise:install"]
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]

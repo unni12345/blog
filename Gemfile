@@ -67,4 +67,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #front end gems
 gem 'bulma-rails', '~> 0.9.0'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
+gem 'jquery-rails', '~> 4.4'
 
+#authentication
+gem 'devise', '~> 4.7', '>= 4.7.2'
