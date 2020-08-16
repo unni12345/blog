@@ -21,13 +21,13 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = find_post
     @comment = Comment.new
     @comments = Comment.where(post_id: params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = find_post
   end
 
   def update
@@ -40,10 +40,20 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = find_post
+    @post.destroy
+    redirect_to posts_path
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:title, :content)
+  end
+
+  def find_post
+    Post.find(params[:id])
   end
 
 end

@@ -6,5 +6,41 @@
     <div class="content">
       <%= @post.content %>
     </div>
+<h1> Comments </h1>
+    <div class="comments_actual">
+    <% @comments.each do |comment| %>
+        <p><%= comment.content %></p>
+        <p><%= link_to 'Show', post_comment_path(@post, comment), method: :get %></p>
+        <p><%= link_to 'Edit', edit_post_comment_path(@post, comment) %></p>
+        <p> <%= link_to 'Delete', post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" } %></p>
+    <% end %>
+    </div>
+
+    <div class="level-right">
+      <p class="level-item">
+        <%= link_to "Edit", edit_post_path(@post), class:"button" %>
+      </p>
+      <p class="level-item">
+        <%= link_to "Destroy", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger" %>
+      </p>
+    </div>
+
+
+
+    <div class="comments">
+      <%= simple_form_for([@post, @post.comments.build]) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <%= f.input :content %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+    </div>
   </div>
+
 </section>

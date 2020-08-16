@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :posts do
-    resources :comments, :only => [:create, :index, :new,  :edit, :update]
+    resources :comments, :only => [:create, :index, :new,  :edit, :update, :show, :destroy]
   end
   # post '/posts/:id/comments/create/', to: 'comments#create'
   # get '/posts/:id/comments', to: 'comments#index'
