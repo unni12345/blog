@@ -2,19 +2,21 @@
 
 <section class="section">
   <div class="container">
-    <%= @posts.each do |post| %>
+    <% @posts.each do |post| %>
       <div class="card">
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4"> <%= link_to post.title, post %></p>
+              <p class="title is-4"> <%= link_to "#{post.title}", post_path(post) %></p>
             </div>
-          </div>
-          <div class="content">
-            <%= post.content %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
+      <div class="level-right">
+      <p class="level-item">
+        <%= link_to "New Post", new_post_path(@post), class:"button" %>
+      </p>
+    </div>
 </section>
